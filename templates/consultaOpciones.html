@@ -26,12 +26,5 @@
     {% else %}
         <p>{{resp['mensaje']}}</p>
     {% endif %}
-    {% if get_flashed_messages() %}
-        {% for mensaje in get_flashed_messages() %}
-        <div class="alert alert-success alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>{{mensaje}}</strong>
-        </div>
-        {% endfor %}
-    {% endif %}
+    <a href="/">Regresar</a>
 {% endblock %}

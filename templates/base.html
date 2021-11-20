@@ -3,10 +3,17 @@
     TitulaTEC
 {% endblock %}
 {% block content %}
-<p> Bienvenido a TitulaTEC </p>
     {% block principal %}
 
     {% endblock %}
+    {% if get_flashed_messages() %}
+        {% for mensaje in get_flashed_messages() %}
+        <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>{{mensaje}}</strong>
+        </div>
+        {% endfor %}
+    {% endif %}
 {% endblock %}
 {% block scripts %}
     {{super()}}

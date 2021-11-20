@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block navbar %}
+    {% include 'menu.html' %}
+{% endblock %}
+{% block principal %}
+    <div class="text-center">
+        <h1>Bienvenido <i>{{usuario['nombre']}}</i> al Sistema de TitulaTEC</h1>
+        <img src="{{url_for('static',filename='fondo.jpg')}}">
+    </div>
+{% endblock %}
