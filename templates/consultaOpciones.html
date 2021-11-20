@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block principal %}
+    <h1 class="bg bg-info text-center">LISTADO DE OPCIONES</h1>
+    <a href="/opciones/nueva" class="btn btn-primary">Agregar opcion</a>
+    {% if resp['estatus']=='Ok' %}
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Ver</th>
+        </thead>
+        {% for opcion in resp['opciones'] %}
+            <tr>
+                <td>{{opcion['idOpcion']}}</td>
+                <td>{{opcion['nombre']}}</td>
+                <td>{{opcion['descripcion']}}</td>
+                <td>
+                    <a href="/opciones/ver/{{opcion['idOpcion']}}">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>{{resp['mensaje']}}</p>
+    {% endif %}
+    {% if get_flashed_messages() %}
+        {% for mensaje in get_flashed_messages() %}
+        <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>{{mensaje}}</strong>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
